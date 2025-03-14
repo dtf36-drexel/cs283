@@ -367,12 +367,10 @@ int exec_client_requests(int cli_socket) {
         // - buffer contents from execute commands
         //  - etc.
 
-        {
-            char resp[128];
-            snprintf(resp, sizeof(resp), RCMD_MSG_SVR_RC_CMD, cmd_rc);
-            send_message_string(cli_socket, resp);
-            // send_message_string() calls send_message_eof() internally
-        }
+        char resp[128];
+        snprintf(resp, sizeof(resp), RCMD_MSG_SVR_RC_CMD, cmd_rc);
+        send_message_string(cli_socket, resp);
+
 
         last_rc = cmd_rc;
 
